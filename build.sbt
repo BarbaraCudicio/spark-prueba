@@ -3,15 +3,10 @@ name := "testspark"
 scalaVersion := "2.11.12"
 
 lazy val dependencyVersions = new {
-  val spark = "2.4.1"
+  val spark = "2.3.2"
 }
 
-val dependencies = Seq(
-  //"org.scala-lang" % "scala-compiler" % "2.11.8",
-  "org.scalatest" %% "scalatest" % "3.0.4" % "test",
-  "org.mockito" % "mockito-all" % "1.10.19" % "test",
-  "com.typesafe" % "config" % "1.3.2"
-)
+scalacOptions := Seq("-deprecation", "-unchecked", "-feature")
 
 
 val providedDependencies = Seq(
@@ -20,7 +15,11 @@ val providedDependencies = Seq(
   "org.apache.spark" %% "spark-hive" % dependencyVersions.spark
 ) map (_ % "provided")
 
+val dependencies = Seq(
+  "org.apache.hadoop" % "hadoop-mapreduce-client-core" % "2.7.2",
+  "org.apache.hadoop"%"hadoop-common"%"2.7.2",
+  "commons-io"%"commons-io"%"2.4"
+)
 
-libraryDependencies ++= dependencies ++ providedDependencies
-
-
+libraryDependencies ++=  providedDependencies ++ dependencies
+dependencyOverrides ++= dependencies

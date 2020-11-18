@@ -6,7 +6,7 @@ conf.setAppName("Simple Application")
 
 val sc = new SparkContext(conf)
 
-val logFile = "/home/cudicio/abc"
+val logFile = "/home/cudicio/abc.txt"
 val logData = sc.textFile(logFile).cache()
 val numAs = logData.filter(line => line.contains("a")).count()
 val numBs = logData.filter(line => line.contains("b")).count()
