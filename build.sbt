@@ -6,9 +6,6 @@ lazy val dependencyVersions = new {
   val spark = "2.3.2"
 }
 
-scalacOptions := Seq("-deprecation", "-unchecked", "-feature")
-
-
 val providedDependencies = Seq(
   "org.apache.spark" %% "spark-core" % dependencyVersions.spark,
   "org.apache.spark" %% "spark-sql" % dependencyVersions.spark,
